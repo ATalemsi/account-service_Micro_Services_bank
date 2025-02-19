@@ -1,12 +1,26 @@
 package org.cibanc.account_service.model;
 
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 import org.cibanc.account_service.model.enums.TypeCompte;
 
-@Data
+@Entity
+@Table(name = "accounts")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Account {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private double solde;
-    private TypeCompte type; // COURANT / EPARGNE
+
     private Long clientId;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TypeCompte type;
+
+    private Double solde;
 }

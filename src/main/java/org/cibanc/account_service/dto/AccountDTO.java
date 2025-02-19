@@ -8,4 +8,5 @@ public class AccountDTO {
     private Long id;
     private double solde;
     private TypeCompte type;
+    private Long clientId;
 }
